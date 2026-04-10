@@ -16,12 +16,12 @@ test('TC01 - Valid user should login successfully',async ({app,page})=>{
 
 test('TC02 - Locked out user should not login',async ({app})=>{
     //test('TC02 - Locked out user should not login',async ({loginAction,page})=>{
-    //const loginAction = new LoginAction(page);
+    //const loginAction = new LoginAction(page)
     await app.loginAction.login(loginData.lockedUser.username ,loginData.lockedUser.password);
     const errormsg = await app.loginAction.getErrorMessage();
     await expect(errormsg).toHaveText(loginData.lockedUser.errorMessage);
 });
-
+``
 test('TC03 - problem user should not login',async ({app})=>{
    // test('TC03 - problem user should not login',async ({loginAction,page})=>{
     //const loginAction = new LoginAction(page);
