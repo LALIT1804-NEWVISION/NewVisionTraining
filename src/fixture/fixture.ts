@@ -1,16 +1,14 @@
-import { test as base } from "@playwright/test";
-import { LoginAction } from "../action/loginAction";
+import { test as base } from '@playwright/test';
+import { AppAction } from '../actions/AppAction';
 
 type Fixtures = {
-    loginAction: LoginAction;
-
+  app: AppAction;
 };
 
 export const test = base.extend<Fixtures>({
-    loginAction: async ({ page }, use) => {
-        const loginAction = new LoginAction(page);
-        await use(loginAction);
-    }
+  app: async ({ page }, use) => {
+    await use(new AppAction(page));
+  },
 });
 
-export { expect } from "@playwright/test";
+export { expect } from '@playwright/test';
