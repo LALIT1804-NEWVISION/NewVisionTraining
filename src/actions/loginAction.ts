@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from "../page/loginPage";
+import { LoginPage } from "../pages/loginPage";
 
 export class LoginAction {
 
