@@ -1,0 +1,14 @@
+{
+  "cart": {
+    "singleCount": 1,
+    "multipleCount": 2
+  },
+
+  "products": {
+    "single": "Sauce Labs Backpack",
+    "multiple": [
+      "Sauce Labs Backpack",
+      "Sauce Labs Bike Light"
+    ]
+  }
+}
