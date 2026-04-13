@@ -1,17 +1,22 @@
 import { test as base } from '@playwright/test';
-//import { AppAction } from '../actions/AppAction';
-import { helperAction } from '../utils/helpers';
-type Fixtures = {
-  //app: AppAction;
-  helper :helperAction;
+import { AppAction } from '../actions/AppAction';
+import { Helper } from '../utils/helpers';
 
+type Fixtures = {
+    app: AppAction;
+    helper: Helper;
 };
 
 export const test = base.extend<Fixtures>({
-  helper: async ({ page }, use) => {
-    const allActions = new helperAction(page)
-    await use(allActions);
-  },
+    app: async ({ page }, use) => {
+        const appAction = new AppAction(page);
+        await use(appAction);
+    },
+
+    helper: async ({ app }, use) => {
+        const helper = new Helper(app);
+        await use(helper);
+    }
 });
 
 export { expect } from '@playwright/test';

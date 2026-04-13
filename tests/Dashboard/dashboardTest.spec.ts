@@ -1,6 +1,7 @@
 import { test, expect } from "../../src/fixture/fixture.ts";
 import loginData from "../../src/testdata/login.json";
 
+
 test.beforeEach(async ({ helper, page }) => {
     await page.goto(loginData.baseUrl);
     await helper.loginAsValidUser();
@@ -14,12 +15,12 @@ test('TC_Dashboard_02 - Verify dashboard title', async ({ page }) => {
     await expect(page).toHaveTitle(loginData.PageTile);
 });
 
-test('TC_Dashboard_03 - Verify dashboard heading is visible', async ({ helper }) => {
-    const heading = helper.AppAction.dashboard.getHeading();
+test('TC_Dashboard_03 - Verify dashboard heading is visible', async ({ app }) => {
+    const heading = app.dashboard.getHeading();
     await expect(heading).toBeVisible();
 });
 
-test('TC_Dashboard_04 - Verify dashboard heading text', async ({ helper }) => {
-    const heading = await helper.AppAction.dashboard.getHeadingText();
+test('TC_Dashboard_04 - Verify dashboard heading text', async ({ app }) => {
+    const heading = await app.dashboard.getHeadingText();
     expect(heading).toBe('Products');
 });
