@@ -47,6 +47,7 @@ Test Cases:
 TC01_AddToCart - Verify that a single product can be added to the cart
 TC02_AddToCart - Verify that multiple products can be added
 TC03_AddToCart - Verify that the cart badge count increases accordingly
+TC04_AddToCart - Verify that the cart badge count increases Dynamically
 =============================================================================================================================
 4. Remove from Cart
 
