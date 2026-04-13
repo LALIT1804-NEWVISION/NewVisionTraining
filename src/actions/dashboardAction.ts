@@ -7,8 +7,11 @@ export class DashboardAction {
   constructor(page: Page) {
     this.dashboardPage = new DashboardPage(page);
   }
-
-  async getTitle() {
+   getHeading() {
+    return this.dashboardPage.title;
+  }
+  async getHeadingText() {
     return await this.dashboardPage.title.textContent();
   }
+
 }
