@@ -1,0 +1,115 @@
+=============================================================================================================================
+Test Cases – E-commerce Application
+============================================================================================================================
+1. Login Functionality
+
+Objective: Verify that users can log in with valid credentials and are restricted with invalid or unauthorized access.
+
+Test Cases:
+
+TC01_Login - Verify that a valid user can log in successfully
+TC02_Login - Verify that a locked-out user cannot log in
+TC03_Login - Verify that login fails with invalid credentials
+TC04_Login - Verify that an appropriate error message is displayed for invalid login attempts
+TC05_Login - Verify that the user is redirected to the dashboard after successful login
+============================================================================================================================
+2. Basic Dashboard Validation Tests
+
+Objective: Verify that the dashboard loads correctly after login.
+
+Test Cases:
+
+TC01_Dashboard - Verify that the dashboard page loads successfully
+TC02_Dashboard - Verify the page title is correct
+TC03_Dashboard - Verify the URL contains the expected path (e.g., /inventory)
+TC04_Dashboard - Verify that the dashboard heading is visible
+TC05_Dashboard - Verify that the dashboard heading text
+============================================================================================================================
+3. Product Related Tests
+
+Objective: Validate product listing and basic product information.
+
+Test Cases:
+
+TC01_DashboardProduct - Verify that the product list is displayed on the dashboard
+TC02_DashboardProduct - Verify the total number of products
+TC03_DashboardProduct - Verify that each product name is visible
+TC04_DashboardProduct - Verify that each product price is visible
+TC05_DashboardProduct - Verify that each Product name not empty
+TC06_DashboardProduct - Verify that eac Product price format
+=============================================================================================================================
+3. Add to Cart Functionality
+
+Objective: Ensure users can add products to the cart.
+
+Test Cases:
+
+TC01_AddToCart - Verify that a single product can be added to the cart
+TC02_AddToCart - Verify that multiple products can be added
+TC03_AddToCart - Verify that the cart badge count increases accordingly
+=============================================================================================================================
+4. Remove from Cart
+
+Objective: Validate removal of products from the cart.
+
+Test Cases:
+
+TC01_RemoveFromCartt - Verify that a product can be removed from the cart
+TC02_RemoveFromCartt - Verify that the cart badge count decreases after removal
+=============================================================================================================================
+5. Sorting Functionality
+
+Objective: Validate sorting behavior of products.
+
+Test Cases:
+
+TC01_Product_Sorting - Verify sorting by Name (A → Z)
+TC02_Produc_Sorting - Verify sorting by Name (Z → A)
+TC03_Product_Sorting - Verify sorting by Price (Low → High)
+TC04_Product_Sorting - Verify sorting by Price (High → Low)
+TC05_Product_Sorting - Verify that the product list is correctly sorted after applying each option
+==============================================================================================================================
+6. Product Details Page
+
+Objective: Validate product detail view.
+
+Test Cases:
+
+TC01_Product_Details - Verify that clicking on a product opens the product details page
+TC02_Product_Details - Verify that the product name is displayed correctly
+TC03_Product_Details - Verify that the product price is displayed correctly
+TC04_Product_Details - Verify that the product description is visible
+==========================================================================================================================
+7. Cart Page Navigation
+
+Objective: Validate navigation to the cart page.
+
+Test Cases:
+
+TC01_CartPage - Verify that clicking the cart icon opens the cart page
+TC02_CartPage - Verify that the cart page URL is correct
+TC03_CartPage - Verify that selected products are displayed in the cart
+=========================================================================================================================
+8. Logout Functionality
+
+Objective: Ensure user can log out successfully.
+
+Test Cases:
+
+TC01_Logout - Verify that the menu can be opened
+TC02_Logout - Verify that clicking the logout option logs the user out
+TC03_Logout - Verify that the user is redirected to the login page
+=========================================================================================================================
+9. Negative / Edge Cases
+
+Objective: Validate system behavior under edge conditions.
+
+Test Cases:
+
+TC01_Negative - Verify the cart empty state when no products are added
+TC02_Negative - Verify that the same product cannot be added multiple times (if restricted)
+TC03_Negative - Verify that accessing the dashboard without login is not allowed
+========================================================================================================================
+
+
+

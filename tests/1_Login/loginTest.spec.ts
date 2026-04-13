@@ -1,9 +1,10 @@
 import { test, expect } from "../../src/fixture/fixture.ts";
+import BaseData  from "../../src/testdata/base.json";
 import loginData from "../../src/testdata/login.json";
 
 
 test.beforeEach(async ({ page }) => {
-    await page.goto(loginData.baseUrl);
+    await page.goto(BaseData.baseUrl);
 });
 
 test('TC_Login_01 - Valid user should login successfully', async ({ helper }) => {

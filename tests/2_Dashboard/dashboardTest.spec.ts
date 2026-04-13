@@ -1,9 +1,10 @@
 import { test, expect } from "../../src/fixture/fixture.ts";
-import loginData from "../../src/testdata/login.json";
+import BaseData from "../../src/testdata/base.json";
+import DashboardData  from "../../src/testdata/dashboard.json";
 
 
 test.beforeEach(async ({ helper, page }) => {
-    await page.goto(loginData.baseUrl);
+    await page.goto(BaseData.baseUrl);
     await helper.loginAsValidUser();
 });
 
@@ -12,7 +13,7 @@ test('TC_Dashboard_01 - Verify dashboard URL', async ({ page }) => {
 });
 
 test('TC_Dashboard_02 - Verify dashboard title', async ({ page }) => {
-    await expect(page).toHaveTitle(loginData.PageTile);
+    await expect(page).toHaveTitle(DashboardData.PageTile);
 });
 
 test('TC_Dashboard_03 - Verify dashboard heading is visible', async ({ app }) => {
