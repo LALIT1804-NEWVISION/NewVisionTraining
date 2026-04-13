@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { DashboardProductPage } from '../../src/pages/DasboardProductPage';
+import { DashboardProductPage } from '../pages/dasboardProductPage';
 
 export class DashboardProductAction {
   readonly dashboardProductPage: DashboardProductPage;
