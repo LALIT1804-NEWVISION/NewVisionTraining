@@ -9,27 +9,20 @@ export class AddToCartAction {
     }
 
     async addProductByName(productName: string) {
-        await this.addToCartPage.page
-            .locator(`.inventory_item:has-text("${productName}")`)
-            .getByRole('button', { name: 'Add to cart' })
-            .click();
+        await this.addToCartPage.getAddToCartButton(productName).click();
     }
-    
+
     async addMultipleProducts(products: string[]) {
-    for (const product of products) {
-        await this.addProductByName(product);
+        for (const product of products) {
+            await this.addProductByName(product);
+        }
+    }
+
+    async removeProductByName(productName: string) {
+        await this.addToCartPage.getRemoveButton(productName).click();
+    }
+
+    getCartBadge() {
+        return this.addToCartPage.cartBadge;
     }
 }
-
-getCartBadge() {
-    return this.addToCartPage.AddToCartBadge;
-}
-}
-
-
-
-
-
-
-
-

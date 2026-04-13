@@ -39,3 +39,21 @@ test('TC04_AddToCart - Cart badge increases dynamically', async ({ app }) => {
         await expect(app.cart.getCartBadge()).toHaveText((i + 1).toString());
     }
 });
+
+test('TC05_RemoveFromCart - Verify product removed from cart', async ({ app }) => {
+    
+    const product = AddToCartData.products.single;
+    await app.cart.addProductByName(product);
+    await expect(app.cart.getCartBadge()).toHaveText('1');
+    await app.cart.removeProductByName(product);
+    await expect(app.cart.getCartBadge()).toHaveCount(0);
+});
+
+test('TC06_RemoveFromCart - Verify cart badge decreases', async ({ app }) => {
+    
+    const products = AddToCartData.products.multiple;
+    await app.cart.addMultipleProducts(products);
+    await expect(app.cart.getCartBadge()).toHaveText('2');
+    await app.cart.removeProductByName(products[0]);
+    await expect(app.cart.getCartBadge()).toHaveText('1');
+});

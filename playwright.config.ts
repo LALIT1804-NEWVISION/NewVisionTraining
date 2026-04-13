@@ -8,6 +8,9 @@ export default defineConfig({
   reporter: 'html',         // HTML report
   use: {
     headless: true,
+    launchOptions: {
+      slowMo: 1000
+    },
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',

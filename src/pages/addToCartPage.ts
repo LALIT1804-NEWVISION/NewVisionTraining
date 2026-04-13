@@ -2,78 +2,22 @@ import { Page, Locator } from '@playwright/test';
 
 export class AddToCartPage {
     readonly page: Page;
-
-    readonly addToCartButtons: Locator;
-    readonly AddToCartBadge: Locator;
+    readonly cartBadge: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.addToCartButtons = page.locator('//button[text()="Add to cart"]');
-        //this.AddToCartBadge = page.locator('//span[@class="shopping_cart_badge"]');
-        this.AddToCartBadge = page.locator('.shopping_cart_badge');
+        this.cartBadge = page.locator('.shopping_cart_badge');
+    }
 
+    getProduct(productName: string): Locator {
+        return this.page.locator('.inventory_item').filter({ hasText: productName });
+    }
 
+    getAddToCartButton(productName: string): Locator {
+        return this.getProduct(productName).getByRole('button', { name: 'Add to cart' });
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
+    getRemoveButton(productName: string): Locator {
+        return this.getProduct(productName).getByRole('button', { name: 'Remove' });
     }
 }
