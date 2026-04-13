@@ -55,8 +55,8 @@ Objective: Validate removal of products from the cart.
 
 Test Cases:
 
-TC01_RemoveFromCartt - Verify that a product can be removed from the cart
-TC02_RemoveFromCartt - Verify that the cart badge count decreases after removal
+TC01_RemoveFromCart - Verify that a product can be removed from the cart
+TC02_RemoveFromCart - Verify that the cart badge count decreases after removal
 =============================================================================================================================
 5. Sorting Functionality
 
@@ -111,6 +111,23 @@ TC01_Negative - Verify the cart empty state when no products are added
 TC02_Negative - Verify that the same product cannot be added multiple times (if restricted)
 TC03_Negative - Verify that accessing the dashboard without login is not allowed
 ========================================================================================================================
+KT session  - 13-04-2026
+=======================================================================================================================
+LOCATORS - Locator is used to identify and interact with elements on a webpage.
+id → Finds element using unique id
+name → Finds element using name attribute
+class → Finds element using class
+CSS Selector → Finds element using CSS patterns (#id, .class)
+XPath → Finds element using DOM path
 
-
+Built-in locators - Built-in locators help find elements in a user-friendly and reliable way
+========================================================================================================================
+page.getByRole() to locate by explicit and implicit accessibility attributes.
+page.getByText() to locate by text content.
+page.getByLabel() to locate a form control by associated label's text.
+page.getByPlaceholder() to locate an input by placeholder.
+page.getByAltText() to locate an element, usually image, by its text alternative.
+page.getByTitle() to locate an element by its title attribute.
+page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+========================================================================================================================
 
