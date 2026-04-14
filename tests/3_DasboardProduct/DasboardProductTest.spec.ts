@@ -1,25 +1,26 @@
 import { test, expect } from "../../src/fixture/fixture";
 import BaseData from "../../src/testdata/base.json";
 import DashboardProductData from "../../src/testdata/dashboardproduct.json";
+import loginData from "../../src/testdata/login.json";
 
-test.beforeEach(async ({ helper, page }) => {
-  await page.goto(BaseData.baseUrl);
-  await helper.loginAsValidUser();
+test.beforeEach(async ({ page,appAction }) => {
+    await page.goto(BaseData.baseUrl);
+    await appAction.loginAction.login(loginData.validUser.username, loginData.validUser.password);
 });
 
-test('TC01_DashboardProduct - Verify that the product list is displayed on the dashboard', async ({ app }) => {
+test('TC01_DashboardProduct - Verify that the product list is displayed on the dashboard', async ({ appAction }) => {
   await expect(
-    app.dashboardProduct.getProducts().first()
+    appAction.dashboardproductAction.getProducts().first()
   ).toBeVisible();
 });
 
-test('TC02_DashboardProduct - Verify the total number of products', async ({ app }) => {
-  const count = await app.dashboardProduct.getProductCount();
+test('TC02_DashboardProduct - Verify the total number of products', async ({ appAction }) => {
+  const count = await appAction.dashboardproductAction.getProductCount();
   expect(count).toBe(DashboardProductData.totalProducts);
 });
 
-test('TC03_DashboardProduct - Verify that each product name is visible', async ({ app }) => {
-  const names = app.dashboardProduct.getProductNames();
+test('TC03_DashboardProduct - Verify that each product name is visible', async ({ appAction }) => {
+  const names = appAction.dashboardproductAction.getProductNames();
   const count = await names.count();
 
   for (let i = 0; i < count; i++) {
@@ -27,8 +28,8 @@ test('TC03_DashboardProduct - Verify that each product name is visible', async (
   }
 });
 
-test('TC04_DashboardProduct - Verify that each product price is visible', async ({ app }) => {
-  const prices = app.dashboardProduct.getProductPrices();
+test('TC04_DashboardProduct - Verify that each product price is visible', async ({ appAction }) => {
+  const prices = appAction.dashboardproductAction.getProductPrices();
   const count = await prices.count();
 
   for (let i = 0; i < count; i++) {
@@ -36,8 +37,8 @@ test('TC04_DashboardProduct - Verify that each product price is visible', async 
   }
 });
 
-test('TC05_DashboardProduct - Verify that each Product name not empty', async ({ app }) => {
-  const names = app.dashboardProduct.getProductNames();
+test('TC05_DashboardProduct - Verify that each Product name not empty', async ({ appAction }) => {
+  const names = appAction.dashboardproductAction.getProductNames();
   const count = await names.count();
 
   for (let i = 0; i < count; i++) {
@@ -46,8 +47,8 @@ test('TC05_DashboardProduct - Verify that each Product name not empty', async ({
   }
 });
 
-test('TC06_DashboardProduct - Verify that eac Product price format', async ({ app }) => {
-  const prices = app.dashboardProduct.getProductPrices();
+test('TC06_DashboardProduct - Verify that eac Product price format', async ({ appAction }) => {
+  const prices = appAction.dashboardproductAction.getProductPrices();
   const count = await prices.count();
 
   for (let i = 0; i < count; i++) {

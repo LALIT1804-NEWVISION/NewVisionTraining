@@ -38,9 +38,9 @@ TC04_DashboardProduct - Verify that each product price is visible
 TC05_DashboardProduct - Verify that each Product name not empty
 TC06_DashboardProduct - Verify that eac Product price format
 =============================================================================================================================
-3. Add to Cart Functionality
+4. Add to Cart Functionality & Remove from Cart
 
-Objective: Ensure users can add products to the cart.
+Objective: Ensure users can add products to the cart. & Validate removal of products from the cart.
 
 Test Cases:
 
@@ -48,17 +48,10 @@ TC01_AddToCart - Verify that a single product can be added to the cart
 TC02_AddToCart - Verify that multiple products can be added
 TC03_AddToCart - Verify that the cart badge count increases accordingly
 TC04_AddToCart - Verify that the cart badge count increases Dynamically
+TC05_RemoveFromCart - Verify that a product can be removed from the cart
+TC06_RemoveFromCart - Verify that the cart badge count decreases after removal
 =============================================================================================================================
-4. Remove from Cart
-
-Objective: Validate removal of products from the cart.
-
-Test Cases:
-
-TC01_RemoveFromCart - Verify that a product can be removed from the cart
-TC02_RemoveFromCart - Verify that the cart badge count decreases after removal
-=============================================================================================================================
-5. Sorting Functionality
+5. Product Sorting Functionality
 
 Objective: Validate sorting behavior of products.
 
@@ -130,4 +123,32 @@ page.getByAltText() to locate an element, usually image, by its text alternative
 page.getByTitle() to locate an element by its title attribute.
 page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
 ========================================================================================================================
+import { test, expect } from '@playwright/test';
 
+test('Login and Add to Cart', async ({ page }) => {
+
+    // Open website
+    await page.goto('https://www.saucedemo.com');
+    // id
+    await page.locator('#user-name').fill('standard_user');
+    // name
+    await page.locator('[name="password"]').fill('secret_sauce');
+    // class
+    await page.locator('.login-button').click();
+    //CSS 
+    await page.locator('input#user-name').fill('standard_user');
+    // XPath
+    await page.locator('//input[@id="user-name"]').fill('standard_user');
+    // getByPlaceholder
+    await page.getByPlaceholder('Username').fill('standard_user');
+    // getByLabel
+    await page.getByLabel('Password').fill('secret_sauce');
+    // getByRole
+    await page.getByRole('button', { name: 'Login' }).click();
+    // getByText
+    await page.getByText('Sauce Labs Backpack').click();
+    // getByTestId
+    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();
+
+});
+===========================================================================================================================
