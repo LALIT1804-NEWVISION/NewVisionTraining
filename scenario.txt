@@ -150,5 +150,88 @@ test('Login and Add to Cart', async ({ page }) => {
     // getByTestId
     await page.getByTestId('add-to-cart-sauce-labs-backpack').click();
 
-});
+})
 ===========================================================================================================================
+KT session  - 14-04-2026
+===========================================================================================================================
+XPATH AXES CHEAT SHEET
+ancestor => Selects all ancestors (parent, grandparent...)
+Syntax://node/ancestor::tagname
+Example://input[@id='email']/ancestor::form
+ancestor-or-self => Selects current node + ancestors
+Syntax://node/ancestor-or-self::tag
+Example://div[@class='card']/ancestor-or-self::div
+attribute => Selects attributes
+Syntax://node/attribute::attr
+Example://input[@id='username']/attribute::type
+child => Selects direct children
+Syntax://parent/child::tag
+Example://ul[@id='menu']/child::li
+descendant => Selects all children, grandchildren
+Syntax://parent/descendant::tag
+Example://div[@class='container']/descendant::button
+descendant-or-self
+Selects node + descendants
+Syntax://node/descendant-or-self::tag
+Example://div[@class='main']/descendant-or-self::div
+following => Selects everything after node
+Syntax://node/following::tag
+Example://label[text()='Username']/following::input
+following-sibling => Selects next siblings
+Syntax://node/following-sibling::tag
+Example://label[text()='Email']/following-sibling::input
+preceding => Selects everything before node
+Syntax://node/preceding::tag
+Example://button[text()='Submit']/preceding::input
+preceding-sibling => Selects previous siblings
+Syntax://node/preceding-sibling::tag
+Example://input[@id='password']/preceding-sibling::label
+parent => Selects parent
+Syntax://node/parent::tag
+Example://input[@id='email']/parent::div
+self => Selects current node
+Syntax: //node/self::tag
+Example: //div[@class='box']/self::div
+==================================================================================================================
+import { test, expect } from '@playwright/test';
+
+test('practice with XPATH AXES', async ({ page }) => {
+
+    // Navigate to website
+    await page.goto('https://automationexercise.com/');
+
+    // Ancestor - selects all ancestor elements (parent, grandparent, etc.)
+    const homeLink = page.locator('//*[@class="fa fa-home"]/ancestor::a');
+    await homeLink.click();
+    // Parent - selects direct parent element
+    await page.locator('//*[@class="fa fa-lock"]/parent::a').click();
+    // Self - selects current element itself
+    await expect(page.locator("//h2[text()='Login to your account']/self::h2")).toBeVisible();
+    // Attribute - selects element based on attribute
+    const emailField = page.locator("//input[@data-qa='login-email']");
+    await emailField.fill("guptalalit4223@gmail.com");
+    // Child - selects direct child element (used here with safer //)
+    const passwordField = page.locator("//form//input[@data-qa='login-password']");
+    await passwordField.fill("Vision1804@");
+    // Descendant - selects all child, grandchild elements inside form
+    const loginBtn = page.locator("//form//button[@data-qa='login-button']");
+    await loginBtn.click();
+    // Ancestor-or-self - selects current element + its ancestors
+    await expect(page.locator("//a[contains(text(),'Logged in as')]/ancestor-or-self::a")).toBeVisible();
+    // Following - selects all elements after current element
+    await page.locator("//a[@href='/']/following::a[@href='/products']").click();
+    // Following-sibling - selects all siblings after current element
+    await page.locator("//div[@class='features_items']//*[contains(text(),'Add to cart')]/ancestor::div[@class='productinfo text-center']/p[contains(text(),'Blue Top')]").click();
+    // Preceding - selects all elements before current element
+    await page.locator("//button[normalize-space()='Continue Shopping']").click();
+    // Preceding-sibling - selects all siblings before current element
+    await page.locator("//div[@class='features_items']//*[contains(text(),'Add to cart')]/ancestor::div[@class='productinfo text-center']/p[contains(text(),'Men Tshirt')]").click();   
+    //  // Preceding - selects all elements before current element
+    await page.locator("//button[normalize-space()='Continue Shopping']").click();
+    // Self - selects current element itself
+    const cartBadge = page.locator("//a[@href='/view_cart']/span/self::span");
+    await expect(cartBadge).toHaveText('2');
+});
+===================================================================================================================
+KT session  - 15-04-2026
+==================================================================================================================

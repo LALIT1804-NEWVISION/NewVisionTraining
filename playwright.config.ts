@@ -8,13 +8,14 @@ export default defineConfig({
   reporter: 'html',         // HTML report
   use: {
     headless: true,
-    launchOptions: {
-      slowMo: 1000
-    },
+    // launchOptions: {
+    //   slowMo: 1000
+    // },
+    trace: 'on-first-retry',
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    video: 'retain-on-failure'
   },
   projects: [
     {
